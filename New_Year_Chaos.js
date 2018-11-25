@@ -26,29 +26,30 @@ let minimumBribes = q => {
 let sort = arr => {
     let swap = true,
         counter = {},
-        results = {
-            chaotic: false,
-            swaps: 0
-        };
+        results = 0;
     while (swap) {
         swap = false;
         for (let i = 0; i < arr.length; i++) {
+            if (results == 'Too chaotic') {
+                break;
+            }
             if (arr[i] > arr[i + 1]) {
                 // increase or set counter for the value
                 counter[arr[i]] =
                     counter[arr[i]] === undefined ? 1 : counter[arr[i]] + 1;
                 // Check if it's chaotic
                 if (counter[arr[i]] > 2) {
-                    results.chaotic = true;
+                    results = 'Too chaotic';
+                    break;
                 }
                 // swap the values
                 [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
                 // increase swaps
-                results.swaps++;
+                results++;
                 swap = true;
                 break;
             }
         }
     }
-    return results.chaotic ? 'Too chaotic' : results.swaps;
+    return results;
 };
