@@ -22,7 +22,3 @@ let minumumSwaps = arr => {
     }
     return counter;
 };
-
-let array = [7, 6, 4, 5, 2, 3, 1];
-console.log(array, 0);
-minumumSwaps(array);
