@@ -15,4 +15,6 @@ function isPangram(strings) {
     return res;
 }
 
-isPangram(['we promptly judged antique ivory buckles for the next prize']);
+function isPanagramV2(string) {
+    return [...new Set(string.split(''))].length == 26;
+}
